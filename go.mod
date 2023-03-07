@@ -1,4 +1,4 @@
-module github.com/duckfullstop/farmenwarnen
+module github.com/duckfullstop/blinkybeacon
 
 go 1.19
 

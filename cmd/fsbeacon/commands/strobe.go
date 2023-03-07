@@ -2,7 +2,7 @@ package commands
 
 import (
 	"fmt"
-	"github.com/duckfullstop/farmenwarnen/pkg/fsbeacon"
+	"github.com/duckfullstop/blinkybeacon/pkg/fsbeacon"
 	"github.com/spf13/cobra"
 	"strconv"
 	"time"

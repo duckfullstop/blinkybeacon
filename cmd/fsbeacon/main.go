@@ -1,6 +1,6 @@
 package main
 
-import "github.com/duckfullstop/farmenwarnen/cmd/fsbeacon/commands"
+import "github.com/duckfullstop/blinkybeacon/cmd/fsbeacon/commands"
 
 func main() {
 	commands.Execute()
