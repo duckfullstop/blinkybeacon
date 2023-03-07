@@ -38,3 +38,7 @@ fsbeacon spin 2.5
 If you want the beacon to do a thing indefinitely, simply pass no duration argument - it'll then strobe or spin until you stop the process somehow (probably via CTRL+C).
 
 You'll find more details on using the package in your own applications in its [readme](pkg/fsbeacon/README.md). Please do let me know what you end up making!
+
+## License
+
+This software is licensed under the [MIT license](LICENSE).
