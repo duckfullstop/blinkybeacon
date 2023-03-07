@@ -24,7 +24,7 @@ jobs:
           goos: ${{ matrix.goos }}
           goarch: ${{ matrix.goarch }}
           goversion: "1.19"
-          pre_command: "sudo apt-get update && sudo apt-get install libudev-dev libusb-1.0-0-dev"
+          pre_command: "apt-get update && apt-get install libudev-dev libusb-1.0-0-dev"
           project_path: "./cmd/fsbeacon"
           binary_name: "fsbeacon"
           extra_files: LICENSE README.md
