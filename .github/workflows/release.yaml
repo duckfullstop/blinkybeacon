@@ -8,38 +8,23 @@ on:
 jobs:
   release:
     name: Release Binaries
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        # right now we only build on linux due to needing OS libraries available
+        # if you can think of a way to spew out macOS and Windows binaries, please submit a PR!
+        goos: [linux]
         goarch: ["386", amd64, arm64]
-        exclude:
-          - goarch: "386"
-            os: macos-latest
-          - goarch: arm64
-            os: windows-latest
-        include:
-          - os: ubuntu-latest
-            prepare: |
-              sudo apt-get update
-              sudo apt-get install libudev-dev libusb-1.0-0-dev
-            goos: linux
-          - os: macos-latest
-            goos: darwin
-          - os: windows-latest
-            goos: windows
     steps:
       - uses: actions/checkout@v3
-      - name: Install dependencies
-        if: ${{ matrix.prepare }}
-        run: ${{ matrix.prepare }}
       - uses: wangyoucao577/go-release-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           goos: ${{ matrix.goos }}
           goarch: ${{ matrix.goarch }}
           goversion: "1.19"
+          pre_command: "sudo apt-get update && sudo apt-get install libudev-dev libusb-1.0-0-dev"
           project_path: "./cmd/fsbeacon"
           binary_name: "fsbeacon"
           extra_files: LICENSE README.md
